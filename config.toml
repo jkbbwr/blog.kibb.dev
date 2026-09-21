@@ -1,6 +1,6 @@
 base_url = "https://blog.kibb.dev"
 title = "blog.kibb.dev"
-description = "Thoughts on engineering, systems programming, and craft."
+description = "Notes on building software, breaking things, and figuring stuff out."
 theme = "neon"
 default_language = "en"
 
