@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}404 Not Found · {{ config.title }}{% endblock title %}
+
+{% block content %}
+<div style="text-align: center; padding: 60px 0;">
+  <span class="eyebrow" style="color: var(--neon); font-size: 14px;">404 // Signal Lost</span>
+  <h1 style="font-size: clamp(40px, 8vw, 72px); letter-spacing: -0.04em; margin: 16px 0; color: #fff; text-shadow: 0 0 20px var(--neon);">
+    Page Not Found<span style="color: var(--neon)">.</span>
+  </h1>
+  <p style="color: var(--ink-dim); max-width: 440px; margin: 0 auto 28px; font-size: 17px;">
+    The coordinate you requested does not exist on this network.
+  </p>
+  <a href="/" class="tag neon" style="padding: 8px 18px; font-size: 13px;">
+    « Return to Home
+  </a>
+</div>
+{% endblock content %}

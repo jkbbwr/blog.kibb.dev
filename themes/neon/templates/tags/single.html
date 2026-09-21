@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block title %}#{{ term.name }} · {{ config.title }}{% endblock title %}
+
+{% block content %}
+<a href="/tags/" class="back-link">← all tags</a>
+
+<div class="sec-title">
+  <h2>Tagged with <span style="color: var(--neon);">#{{ term.name }}</span><span class="dot">.</span></h2>
+  <span class="eyebrow">{{ term.pages | length }} posts</span>
+</div>
+
+<div class="posts-grid">
+  {%- for page in term.pages %}
+    <a href="{{ page.path }}" class="post-card">
+      <div class="post-meta">
+        <span class="post-date">{{ page.date | date(format="%B %d, %Y") }}</span>
+        {%- if page.reading_time %}
+          <span class="post-date">· {{ page.reading_time }} min read</span>
+        {%- endif %}
+      </div>
+      <h3>{{ page.title }}</h3>
+      {%- if page.description %}
+        <p class="post-desc">{{ page.description }}</p>
+      {%- endif %}
+    </a>
+  {%- endfor %}
+</div>
+{% endblock content %}

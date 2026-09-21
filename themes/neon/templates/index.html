@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block header %}
+<header class="hero">
+  <div class="glow-field"></div>
+  <div class="wrap">
+    <div class="hero-eyebrow eyebrow">// systems &amp; software engineering</div>
+    <h1 class="wordmark">blog.kibb<span class="flick">.</span>dev</h1>
+    <p class="hero-tag">Thoughts on engineering, <span class="glowc">systems programming</span>, and craft.</p>
+    <p class="lede">Writing code, breaking things, and documenting the lessons along the way.</p>
+  </div>
+</header>
+{% endblock header %}
+
+{% block content %}
+<div class="sec-title">
+  <h2>Latest Posts<span class="dot">.</span></h2>
+  <span class="eyebrow">archive</span>
+</div>
+
+<div class="posts-grid">
+  {%- set blog_section = get_section(path="blog/_index.md", metadata_only=false) %}
+  {%- for page in blog_section.pages %}
+    <a href="{{ page.path }}" class="post-card">
+      <div class="post-meta">
+        <span class="post-date">{{ page.date | date(format="%B %d, %Y") }}</span>
+        {%- if page.reading_time %}
+          <span class="post-date">· {{ page.reading_time }} min read</span>
+        {%- endif %}
+      </div>
+      <h3>{{ page.title }}</h3>
+      {%- if page.description %}
+        <p class="post-desc">{{ page.description }}</p>
+      {%- endif %}
+      {%- if page.taxonomies.tags %}
+        <div class="tag-list">
+          {%- for tag in page.taxonomies.tags %}
+            <span class="tag">{{ tag }}</span>
+          {%- endfor %}
+        </div>
+      {%- endif %}
+    </a>
+  {%- else %}
+    <p style="color: var(--ink-faint);">No posts yet.</p>
+  {%- endfor %}
+</div>
+{% endblock content %}

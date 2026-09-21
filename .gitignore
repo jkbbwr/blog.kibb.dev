@@ -1,0 +1,4 @@
+# Zola build output
+public/
+.zola/
+.DS_Store

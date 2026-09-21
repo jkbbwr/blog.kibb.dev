@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block title %}Tags · {{ config.title }}{% endblock title %}
+
+{% block content %}
+<div class="sec-title">
+  <h2>All Tags<span class="dot">.</span></h2>
+  <span class="eyebrow">{{ terms | length }} tags</span>
+</div>
+
+<div class="tag-list" style="gap: 12px;">
+  {%- for term in terms %}
+    <a href="{{ term.path }}" class="tag" style="font-size: 13px; padding: 6px 14px;">
+      #{{ term.name }} ({{ term.pages | length }})
+    </a>
+  {%- endfor %}
+</div>
+{% endblock content %}

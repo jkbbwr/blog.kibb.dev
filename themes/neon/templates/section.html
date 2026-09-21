@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+
+{% block title %}{{ section.title }} · {{ config.title }}{% endblock title %}
+
+{% block content %}
+<div class="sec-title">
+  <h2>{{ section.title }}<span class="dot">.</span></h2>
+  <span class="eyebrow">{{ section.pages | length }} posts</span>
+</div>
+
+<div class="posts-grid">
+  {%- for page in section.pages %}
+    <a href="{{ page.path }}" class="post-card">
+      <div class="post-meta">
+        <span class="post-date">{{ page.date | date(format="%B %d, %Y") }}</span>
+        {%- if page.reading_time %}
+          <span class="post-date">· {{ page.reading_time }} min read</span>
+        {%- endif %}
+      </div>
+      <h3>{{ page.title }}</h3>
+      {%- if page.description %}
+        <p class="post-desc">{{ page.description }}</p>
+      {%- endif %}
+      {%- if page.taxonomies.tags %}
+        <div class="tag-list">
+          {%- for tag in page.taxonomies.tags %}
+            <span class="tag">{{ tag }}</span>
+          {%- endfor %}
+        </div>
+      {%- endif %}
+    </a>
+  {%- else %}
+    <p style="color: var(--ink-faint);">No posts in this section.</p>
+  {%- endfor %}
+</div>
+{% endblock content %}

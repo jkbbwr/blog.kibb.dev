@@ -1,0 +1,66 @@
+{% extends "base.html" %}
+
+{% block title %}{{ page.title }} · {{ config.title }}{% endblock title %}
+{% block description %}{{ page.description | default(value=config.description) }}{% endblock description %}
+
+{% block content %}
+<article class="post-single">
+  <a href="/blog/" class="back-link">← back to blog</a>
+
+  <header class="post-single-header">
+    <div class="post-meta">
+      {%- if page.date %}
+        <span class="post-date">{{ page.date | date(format="%B %d, %Y") }}</span>
+      {%- endif %}
+      {%- if page.reading_time %}
+        <span class="post-date">· {{ page.reading_time }} min read</span>
+      {%- endif %}
+    </div>
+
+    <h1>{{ page.title }}</h1>
+
+    {%- if page.taxonomies.tags %}
+      <div class="tag-list" style="margin-top: 14px;">
+        {%- for tag in page.taxonomies.tags %}
+          <a href="/tags/{{ tag | slugify }}/" class="tag">{{ tag }}</a>
+        {%- endfor %}
+      </div>
+    {%- endif %}
+  </header>
+
+  <div class="prose">
+    {{ page.content | safe }}
+  </div>
+
+  {%- if config.extra.giscus and config.extra.giscus.enabled %}
+    <hr class="rule" style="margin-top: 48px;">
+    <section class="comments" style="margin-top: 36px;">
+      <div class="sec-title" style="margin-bottom: 24px;">
+        <h2>Discussion<span class="dot">.</span></h2>
+        <span class="eyebrow">GitHub Discussions</span>
+      </div>
+      <div class="giscus"></div>
+      <script src="https://giscus.app/client.js"
+        data-repo="{{ config.extra.giscus.repo }}"
+        data-repo-id="{{ config.extra.giscus.repo_id }}"
+        data-category="{{ config.extra.giscus.category }}"
+        data-category-id="{{ config.extra.giscus.category_id }}"
+        data-mapping="{{ config.extra.giscus.mapping | default(value='pathname') }}"
+        data-strict="0"
+        data-reactions-enabled="1"
+        data-emit-metadata="0"
+        data-input-position="bottom"
+        data-theme="{{ config.extra.giscus.theme | default(value='transparent_dark') }}"
+        data-lang="en"
+        crossorigin="anonymous"
+        async>
+      </script>
+    </section>
+  {%- endif %}
+
+  <hr class="rule" style="margin-top: 48px;">
+  <div style="margin-top: 24px;">
+    <a href="/blog/" class="back-link">← back to all posts</a>
+  </div>
+</article>
+{% endblock content %}

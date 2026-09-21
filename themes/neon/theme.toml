@@ -1,0 +1,9 @@
+name = "neon"
+description = "A sleek, dark cyberpunk burnt orange theme inspired by neon-tube"
+license = "MIT"
+homepage = "https://blog.kibb.dev"
+min_version = "0.23.0"
+
+[author]
+name = "Jakob Bowyer"
+homepage = "https://github.com/jkbbwr"

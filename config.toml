@@ -1,0 +1,32 @@
+base_url = "https://blog.kibb.dev"
+title = "blog.kibb.dev"
+description = "Thoughts on engineering, systems programming, and craft."
+theme = "neon"
+default_language = "en"
+
+generate_feeds = true
+feed_filenames = ["atom.xml"]
+
+taxonomies = [
+    { name = "tags", feed = true },
+]
+
+[markdown]
+smart_punctuation = true
+github_alerts = true
+
+[markdown.highlighting]
+theme = "catppuccin-mocha"
+style = "class"
+
+[extra]
+github = "https://github.com/jkbbwr"
+
+[extra.giscus]
+enabled = true
+repo = "jkbbwr/blog.kibb.dev"
+repo_id = "R_kgDOUki3vg"
+category = "Announcements"
+category_id = "DIC_kwDOUki3vs4DGHUB"
+mapping = "pathname"
+theme = "transparent_dark"
