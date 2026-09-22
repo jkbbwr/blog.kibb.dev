@@ -425,8 +425,10 @@ footer {
   font-weight: 800; font-size: 19px; letter-spacing: -0.04em;
   color: #fff3ee; text-shadow: 0 0 8px rgba(var(--neon-rgb),0.5);
 }
-.colophon { font-family: var(--mono); font-size: 12.5px; color: var(--ink-faint); }
-.colophon a:hover { color: var(--cyan); }
+.colophon { font-family: var(--mono); font-size: 12.5px; color: var(--ink-faint); display: flex; align-items: center; gap: 10px; }
+.colophon a { color: var(--ink-dim); transition: color .15s ease; }
+.colophon a:hover { color: var(--neon); }
+.colophon .sep { color: var(--border-lit); }
 
 @media (max-width: 640px) {
   .nav-links a.ext { display: none; }
